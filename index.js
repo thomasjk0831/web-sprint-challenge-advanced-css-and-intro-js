@@ -356,18 +356,38 @@ The function should console.log 50 chunks of HTML code that match the structure 
 
 function getHTML(/* Code here */){
 
-    /* Code here */
+  for (let key in artists){
+        
+    console.log('<div id="artist">\n <div class="image">\n </div>');
+    console.log('<div class = "' + artists[key].name + '">' );
+    console.log('<a href ="' + artists[key].wikipedia + '">' + artists[key].name)
+}
 
-  }
+}
 
 
 /* STRETCH 2: Create a function called `randomize` that takes a data array as an argument and returns a the same array in a randomized order. */
 
-function randomize(/* Code here */){
+function randomize(array){
 
-    /* Code here */
-
+  /* Code here */
+  const tempArray = [...array];
+  
+  let temp;
+  let tempIndex;
+  for(let i=tempArray.length-1; i>0; i--){
+    tempIndex = Math.floor(Math.random()*(i+1))
+    
+    temp = tempArray[i];
+    tempArray[i] = tempArray[tempIndex];
+    tempArray[tempIndex]= temp;
   }
+
+ return tempArray;
+}
+
+
+console.log(randomize([1,2,3,4,5,6]))
 
 
  /* STRETCH 3: Use advanced array methods (.map, .reduce, .filer) to refactor your MVP code (create an array of all artists born in the 1900s with .filter, for example) */
