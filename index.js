@@ -238,15 +238,22 @@ getArtistByIndex(artists, 0);
 /* Task 4: Create a function called get20s() that takes data as an argument and returns an array with names of artists who were born in and 
 died in 20th century (1900-2000) example born in 1901 and died in 1959 - included / born in 1889 and died in 1925 not included - 
 should return ["Salvador Dali", "Frida Kahlo"]*/
-
 function get20s(array){
   const tempArray = [];
   /* Code here */
+  var yearBorn;
+  var yearDied;
   for(let i=0; i<array.length; i++ ){
-    if()
+    yearBorn = artists[i].years.slice(0,4)
+    yearDied = artists[i].years.slice(7,11)
+    if(yearBorn >= 1900 && yearDied <= 2000 )
+    tempArray.push(artists[i].name)
   }
+  return tempArray;
 
 }
+
+console.log(get20s(artists))
 
 
 /* Task 5: Create a function called `removeArtist` that takes two arguments:
@@ -259,9 +266,13 @@ function get20s(array){
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*code here*/) {
+function removeArtist(array, index) {
     /* code here */
+    array.splice(index,1)
+    console.log(array.length)
   }
+
+
   
  
 
@@ -278,11 +289,25 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/* Code here */){
 
-    /* Code here */
+function addArtist(/* Codobj here */obj){
 
+  artists.push(obj)
+  return artists
+}
+
+
+
+console.log(addArtist(  {
+    "id": 20,
+    "name": "Thomas Kim",
+    "years": "2001-2002",
+    "genre": "North Pole",
+    "nationality": "Aztec",
+    "bio": "He quit painting.",
+    "paintings": 1,
   }
+))
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -292,11 +317,17 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/* Code here */){
-
+function lotsOfArt(array){
+  const tempArray =[];
   /* Code here */
-
+  for(let i=0; i<array.length;i++){
+    if(artists[i].paintings > 100)
+    tempArray.push(artists[i].name)
+  }
+  return tempArray;
 }
+
+lotsOfArt(artists);
 
 
 
